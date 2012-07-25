@@ -76,6 +76,17 @@
     return retIndex;
 }
 
+- (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block
+{
+    NSInteger retIndex = [self addButtonWithTitle:title];
+    if (block) {
+        NSNumber *key = [NSNumber numberWithInt:retIndex];
+        [_actionsPerIndex setObject:[block copy] forKey:key];
+    }
+    [self setCancelButtonIndex:retIndex];
+    return retIndex;
+}
+
 #pragma mark - UIAlertViewDelegate (forwarded)
 - (void)alertViewCancel:(UIAlertView *)alertView
 {

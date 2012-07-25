@@ -15,5 +15,5 @@ typedef void (^JGAAlertViewBlock)(void);
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block;
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title;
-
+- (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block;
 @end

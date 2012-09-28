@@ -5,6 +5,7 @@
 //  Created by John Grant on 12-07-25.
 //  Copyright (c) 2012 Healthcare Made Simple. All rights reserved.
 //
+#import <UIKit/UIKit.h>
 
 typedef void (^JGAAlertViewBlock)(void);
 

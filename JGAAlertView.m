@@ -16,7 +16,7 @@
 {
     id <UIAlertViewDelegate> _externalDelegate;
     NSMutableDictionary *_actionsPerIndex;
-    
+
     struct
     {
         unsigned int delegateSupportsWillDismiss:1;
@@ -36,7 +36,7 @@
         _actionsPerIndex = [[NSMutableDictionary alloc] init];
         self.delegate = self;
     }
-    
+
     return self;
 }
 
@@ -51,12 +51,12 @@
     if (self) {
         self.title = title;
         self.message = message;
-        
+
         if (cancelButton) {
             [self addCancelButtonWithTitle:@"Cancel"];
         }
     }
-    return self;    
+    return self;
 }
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block
@@ -70,7 +70,7 @@
 }
 
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title
-{   
+{
     NSInteger retIndex = [self addButtonWithTitle:title];
     [self setCancelButtonIndex:retIndex];
     return retIndex;
@@ -107,7 +107,7 @@
     if (block) {
         block();
     }
-    
+
     if (_delegateFlags.delegateSupportsDidDismiss) {
         [_externalDelegate alertView:alertView didDismissWithButtonIndex:buttonIndex];
     }
@@ -154,15 +154,15 @@
     }else {
         _externalDelegate = delegate;
     }
-    
+
     // wipe
     memset(&_delegateFlags, 0, sizeof(_delegateFlags));
-    
+
     // set flags according to available methods in delegate
     if ([_externalDelegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)]) {
         _delegateFlags.delegateSupportsClickedButtonAtIndex = YES;
     }
-    if ([_externalDelegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex::)]) {
+    if ([_externalDelegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex:)]) {
         _delegateFlags.delegateSupportsWillDismiss= YES;
     }
     if ([_externalDelegate respondsToSelector:@selector(willPresentAlertView:)]) {
@@ -180,6 +180,6 @@
     if ([_externalDelegate respondsToSelector:@selector(alertViewCancel:)]) {
         _delegateFlags.delegateSupportsAlertViewCancel = YES;
     }
-    
+
 }
 @end

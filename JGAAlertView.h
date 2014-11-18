@@ -11,10 +11,15 @@ typedef void (^JGAAlertViewBlock)(void);
 
 @interface JGAAlertView : UIAlertView
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message;
-- (id)initWithTitle:(NSString *)title message:(NSString *)message defaultCancelButton:(BOOL)cancelButton;
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message;
+
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+          defaultCancelButton:(BOOL)cancelButton;
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block;
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title;
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(JGAAlertViewBlock)block;
+
 @end

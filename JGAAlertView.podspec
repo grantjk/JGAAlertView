@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JGAAlertView'
-  s.version  = '1.0.1'
+  s.version  = '1.0.2'
   s.license  = 'MIT'
   s.summary  = 'Block based alert view.'
   s.homepage = 'https://github.com/grantjk/JGAAlertView'
